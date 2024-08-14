@@ -10,6 +10,7 @@
 
 
 ## About The Project
+This is a copy of FlyBoy but for testing our the various different cloud service providers such as AWS EC2, Azure Web App, Linode VM.
 
 This project is done as a take-home coding assignment for ST engineering aerospace division.
 
