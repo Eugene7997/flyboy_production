@@ -1,5 +1,6 @@
 import { Form } from "react-bootstrap";
 import React, { useState } from 'react';
+import baseUrl from "../baseURL";
 import {useDispatch, useSelector} from 'react-redux'
 import {
     addFlightStart,
@@ -58,7 +59,7 @@ function FlightRegistrationForm( {setFormVisible} ) {
         try {
             dispatch(clearErrors())
             dispatch(addFlightStart())
-            const res = await fetch("http://localhost:5000/api/flightlogs", {
+            const res = await fetch(`${baseUrl}/api/flightlogs`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

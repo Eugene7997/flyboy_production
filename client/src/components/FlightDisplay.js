@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import baseUrl from '../baseURL';
 import FlightItem from './FlightItem'; 
 import {useDispatch, useSelector} from 'react-redux'
 import {
@@ -24,7 +25,7 @@ export default function FlightDisplay() {
             dispatch(clearErrors())
             dispatch(fetchFlightsStart())
             try {
-                const response = await fetch("http://localhost:5000/api/flightlogs", { method: "GET", credentials: 'include' });
+                const response = await fetch(`${baseUrl}/api/flightlogs`, { method: "GET", credentials: 'include' });
                 if (!response.ok) {
                     throw new Error("Failed to fetch flight logs.");
                 }
@@ -41,7 +42,7 @@ export default function FlightDisplay() {
     const handleSave = async (updatedFlightLog) => {
         try {
             dispatch(updateFlightStart())
-            const response = await fetch(`http://localhost:5000/api/flightlogs/${updatedFlightLog._id}`, {
+            const response = await fetch(`${baseUrl}/api/flightlogs/${updatedFlightLog._id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(updatedFlightLog),
@@ -67,7 +68,7 @@ export default function FlightDisplay() {
     const handleDelete = async (id) => {
         try {
             dispatch(deleteFlightStart())
-            const response = await fetch(`http://localhost:5000/api/flightlogs/${id}`, {
+            const response = await fetch(`${baseUrl}/api/flightlogs/${id}`, {
                 method: 'DELETE',
                 credentials: 'include',
             });

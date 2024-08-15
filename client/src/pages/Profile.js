@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+import baseUrl from '../baseURL'
 import {
     signOut,
     deleteUserFailure,
@@ -12,7 +13,7 @@ export default function Profile() {
 
     const handleSignOut = async () => {
         try {
-            await fetch('http://localhost:5000/api/users/sign_out')
+            await fetch(`${baseUrl}/api/users/sign_out`)
             dispatch(signOut())
         }
         catch (err) {
@@ -24,7 +25,7 @@ export default function Profile() {
         if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
             try {
                 dispatch(deleteUserStart())
-                const res = await fetch(`http://localhost:5000/api/users/delete/${currentUser._id}`, {
+                const res = await fetch(`${baseUrl}/api/users/delete/${currentUser._id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
