@@ -1,4 +1,5 @@
-const dotenv = require('dotenv').config()
-const baseUrl = process.env.CLIENT_ORIGIN ||"http://localhost:3000";
 
+
+// const baseUrl = process.env.REACT_APP_CLIENT_ORIGIN ||"http://localhost:5000";
+const baseUrl = process.env.REACT_APP_CLIENT_ORIGIN;
 export default baseUrl;
